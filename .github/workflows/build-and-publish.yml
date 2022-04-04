@@ -16,6 +16,10 @@ jobs:
 
     # steps to perform in job
     steps:
+      - name: Get current date
+        id: date
+        run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
+
       - name: Checkout code
         uses: actions/checkout@v2
 
@@ -35,6 +39,8 @@ jobs:
         with:
           # relative path to the place where source code with Dockerfile is located
           context: ./
+          build-args: |
+            BUILD_DATE=${{ steps.date.outputs.date }}
           # Note: tags has to be all lower-case
           tags: |
             peynmannet/docker-compose-ansible-alpine:latest
