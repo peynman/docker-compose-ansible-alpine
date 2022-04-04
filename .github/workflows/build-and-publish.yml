@@ -3,7 +3,7 @@ name: Build and Publish
 on:
   # run it on push to the default repository branch
   push:
-    branches: [master]
+    branches: [main]
   # run it during pull request
   pull_request:
 
@@ -38,8 +38,8 @@ defaults:
           # Note: tags has to be all lower-case
           tags: |
             peynmannet/docker-compose-ansible-alpine:latest
-          # build on feature branches, push only on master branch
-          push: ${{ github.ref == 'refs/heads/master' }}
+          # build on feature branches, push only on main branch
+          push: ${{ github.ref == 'refs/heads/main' }}
 
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
