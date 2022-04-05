@@ -30,16 +30,20 @@ RUN apk --update add --virtual \
         build-base \
         curl
 
-RUN pip3 install --upgrade \
+RUN pip3 install --upgrade --no-cache \
         pip \
-        cffi
+        cffi \
+        setuptools
 
-RUN pip3 install \
+RUN pip3 install --no-cache --upgrade \
         ansible \
         ansible-lint
 
-RUN pip3 install \
+RUN pip3 install --no-cache --upgrade \
         docker-compose
+
+RUN ln -sf python3 /usr/bin/python
+RUN python3 -m ensurepip
 
 RUN apk del \
         .build-deps
