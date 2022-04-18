@@ -1,4 +1,4 @@
-FROM docker/compose:alpine-1.27.4
+FROM docker/compose:alpine-1.29.2
 
 # Metadata params
 ARG BUILD_DATE
@@ -8,7 +8,7 @@ LABEL maintainer="Peynman. <peynman.net@gmail.com>" \
       org.label-schema.url="https://github.com/peynman/docker-compose-ansible-alpine/blob/master/README.md" \
       org.label-schema.build-date=${BUILD_DATE} \
       org.label-schema.docker.dockerfile="/Dockerfile" \
-      org.label-schema.description="Ansible on alpine docker dompose image" \
+      org.label-schema.description="Ansible & terraform on alpine docker dompose image" \
       org.label-schema.schema-version="1.0"
 
 RUN apk --update --no-cache add \
@@ -21,6 +21,7 @@ RUN apk --update --no-cache add \
         py3-cryptography \
         rsync \
         sshpass
+
 
 RUN apk --update add --virtual \
         .build-deps \
@@ -44,6 +45,10 @@ RUN pip3 install --no-cache --upgrade \
 
 RUN ln -sf python3 /usr/bin/python
 RUN python3 -m ensurepip
+
+
+RUN apk add terraform --repository=http://dl-cdn.alpinelinux.org/alpine/edge/community
+
 
 RUN apk del \
         .build-deps
