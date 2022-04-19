@@ -54,3 +54,7 @@ RUN apk del \
         .build-deps
 
 RUN rm -rf /var/cache/apk/*
+
+
+COPY gitlab-terraform.sh /usr/bin/gitlab-terraform
+RUN chmod +x /usr/bin/gitlab-terraform
