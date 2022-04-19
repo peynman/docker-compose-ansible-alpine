@@ -20,7 +20,8 @@ RUN apk --update --no-cache add \
         py3-pip \
         py3-cryptography \
         rsync \
-        sshpass
+        sshpass \
+        jq
 
 
 RUN apk --update add --virtual \
