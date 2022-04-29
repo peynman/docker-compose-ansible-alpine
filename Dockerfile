@@ -1,7 +1,12 @@
-FROM docker/compose:alpine-1.29.2
+FROM docker:20.10.14-alpine3.15
 
 # Metadata params
 ARG BUILD_DATE
+
+
+RUN apk add --no-cache py3-pip python3-dev libffi-dev openssl-dev curl gcc libc-dev rust cargo make && \
+    pip3 install --no-cache-dir -r docker-compose==1.29.2
+
 
 # Metadata
 LABEL maintainer="Peynman. <peynman.net@gmail.com>" \
