@@ -5,7 +5,7 @@ ARG BUILD_DATE
 
 
 RUN apk add --no-cache py3-pip python3-dev libffi-dev openssl-dev curl gcc libc-dev rust cargo make && \
-    pip3 install --no-cache-dir -r docker-compose==1.29.2
+    pip3 install --no-cache-dir docker-compose==1.29.2
 
 
 # Metadata
