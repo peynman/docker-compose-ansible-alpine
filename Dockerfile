@@ -34,6 +34,7 @@ RUN apk --update add --virtual \
         python3-dev \
         libffi-dev \
         openssl-dev \
+        openssl \
         build-base \
         curl
 
